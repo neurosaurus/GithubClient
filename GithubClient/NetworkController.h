@@ -10,6 +10,6 @@
 
 @interface NetworkController : NSObject
 
-- (NSArray *)reposForSearchString:(NSString *)searchString;
+- (NSMutableArray *)reposForSearchString:(NSString *)searchString;
 
 @end

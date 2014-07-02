@@ -10,13 +10,13 @@
 
 @implementation NetworkController
 
-- (NSArray *)reposForSearchString:(NSString *)searchString
+- (NSMutableArray *)reposForSearchString:(NSString *)searchString
 {
     searchString = [NSString stringWithFormat:@"https://api.github.com/search/repositories?q=%@", searchString];
     NSURL *searchURL = [NSURL URLWithString:searchString];
     NSData *searchData = [NSData dataWithContentsOfURL:searchURL];
     NSError *error;
-    NSMutableDictionary *searchDict = [NSJSONSerialization JSONObjectWithData:searchURL
+    NSMutableDictionary *searchDict = [NSJSONSerialization JSONObjectWithData:searchData
                                                                       options:NSJSONReadingMutableContainers
                                                                         error:&error];
     if (error) {
@@ -26,7 +26,7 @@
         return repos;
     }
     
-    return @[error]; 
+    return [NSMutableArray arrayWithObject:error];
 }
 
 @end

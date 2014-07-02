@@ -11,7 +11,7 @@
 #import "DetailViewController.h"
 
 @interface MasterViewController () {
-    NSMutableArray *_objects;
+    NSMutableArray *_repos;
 }
 @end
 
@@ -29,6 +29,9 @@
     [super viewDidLoad];
 
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    NetworkController *networkController = [NetworkController new];
+    _repos = [networkController reposForSearchString:@"iOS"];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,21 +44,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return _repos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    NSMutableDictionary *repo = _repos[indexPath.row];
+    cell.textLabel.text = [repo objectForKey:@"name"];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDate *object = _objects[indexPath.row];
+    NSDate *object = _repos[indexPath.row];
     self.detailViewController.detailItem = object;
 }
 
