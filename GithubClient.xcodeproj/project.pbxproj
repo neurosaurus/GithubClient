@@ -119,9 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				EB1CA1601963B82700D59365 /* AppDelegate.h */,
+				EB1CA1611963B82700D59365 /* AppDelegate.m */,
 				EB1CA1891964743C00D59365 /* NetworkController.h */,
 				EB1CA18A1964743C00D59365 /* NetworkController.m */,
-				EB1CA1611963B82700D59365 /* AppDelegate.m */,
 				EB1CA1631963B82700D59365 /* Main.storyboard */,
 				EB1CA1661963B82700D59365 /* MasterViewController.h */,
 				EB1CA1671963B82700D59365 /* MasterViewController.m */,
@@ -470,6 +470,7 @@
 				EB1CA1851963B82700D59365 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EB1CA1861963B82700D59365 /* Build configuration list for PBXNativeTarget "GithubClientTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +479,7 @@
 				EB1CA1881963B82700D59365 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

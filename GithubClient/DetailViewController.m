@@ -22,10 +22,10 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setRepo:(id)newRepo
 {
-    if (_repo != newDetailItem) {
-        _repo = newDetailItem;
+    if (_repo != newRepo) {
+        _repo = newRepo;
         
         // Update the view.
         [self configureView];

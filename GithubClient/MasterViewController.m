@@ -30,6 +30,7 @@
     [super viewDidLoad];
 
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
     NetworkController *networkController = [NetworkController new];
     _repos = [networkController reposForSearchString:@"iOS"];
     [self.tableView reloadData];
