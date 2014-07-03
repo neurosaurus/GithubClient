@@ -1,4 +1,4 @@
-//
+ //
 //  DetailViewController.m
 //  GithubClient
 //
@@ -9,8 +9,13 @@
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
+
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
+
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+
 - (void)configureView;
+
 @end
 
 @implementation DetailViewController
@@ -19,8 +24,8 @@
 
 - (void)setDetailItem:(id)newDetailItem
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+    if (_repo != newDetailItem) {
+        _repo = newDetailItem;
         
         // Update the view.
         [self configureView];
@@ -35,8 +40,10 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+    if (self.repo) {
+        NSURL *repoURL = [NSURL URLWithString:[_repo objectForKey:@"html_url"]];
+        NSURLRequest *repoRequest = [NSURLRequest requestWithURL:repoURL];
+        [self.webView loadRequest:repoRequest];
     }
 }
 
@@ -50,7 +57,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Split view

@@ -10,7 +10,8 @@
 #import "NetworkController.h"
 #import "DetailViewController.h"
 
-@interface MasterViewController () {
+@interface MasterViewController () <UISearchBarDelegate>
+{
     NSMutableArray *_repos;
 }
 @end
@@ -58,8 +59,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDate *object = _repos[indexPath.row];
-    self.detailViewController.detailItem = object;
+    NSMutableDictionary *repo = _repos[indexPath.row];
+    self.detailViewController.repo = repo;
+}
+
+#pragma mark - Search Bar Delegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *searchString = searchBar.text;
+    NetworkController *networkController = [NetworkController new];
+    _repos = [networkController reposForSearchString:searchString];
+    [self.tableView reloadData];
 }
 
 @end
