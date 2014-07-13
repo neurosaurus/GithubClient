@@ -1,4 +1,4 @@
-GithubClient
+Github Client
 ============
 
 Proof of concept for a Github-related iOS app. Allows you to search for repositories on Github and browse through the repo.
